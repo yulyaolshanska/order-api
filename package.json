@@ -1,0 +1,59 @@
+{
+  "name": "order-api",
+  "version": "1.0.0",
+  "type": "module",
+  "workspaces": [
+    "apps/backend",
+    "apps/frontend",
+    "packages/*"
+  ],
+  "engines": {
+    "node": "20.x.x",
+    "npm": "10.x.x"
+  },
+  "scripts": {
+    "_prettier": "prettier \"**/*.{js,ts,tsx,json,md,css,html}\"",
+    "git:hook:precommit": "lint-staged --cwd .",
+    "git:hook:commit": "npx @commitlint/cli --edit",
+    "build:shared": "npm run build -w shared",
+    "build:frontend": "npm run build -w frontend",
+    "build:backend": "npm run build -w backend",
+    "build": "npm run build:shared && npm run build:frontend && npm run build:backend && npm run prepare-build",
+    "prepare-build": "sh ./prepare-build.sh",
+    "lint:editor": "editorconfig-checker",
+    "lint:fs": "ls-lint",
+    "lint:type": "npx tsc --noEmit",
+    "lint:js": "npx eslint . --max-warnings=0 --no-warn-ignored",
+    "lint:format": "prettier --check \"**/*.{ts,tsx,json,md,css,html}\"",
+    "lint:trash": "knip",
+    "format": "npm run _prettier -- --write",
+    "lint": "concurrently \"npm:lint:*\" && npm run lint --workspaces",
+    "ci:prepare": "simple-git-hooks",
+    "prestart": "npm install --include=dev && npm run build",
+    "start": "cd apps/build/backend && npm run start"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@eslint/js": "9.9.0",
+    "@ls-lint/ls-lint": "2.2.3",
+    "@types/eslint": "9.6.0",
+    "@types/eslint__js": "8.42.3",
+    "@types/lint-staged": "13.3.0",
+    "@typescript-eslint/eslint-plugin": "8.1.0",
+    "@typescript-eslint/parser": "8.1.0",
+    "concurrently": "8.2.2",
+    "editorconfig-checker": "5.1.8",
+    "eslint": "8.57.0",
+    "eslint-plugin-import": "2.29.1",
+    "globals": "15.9.0",
+    "knip": "^5.27.2",
+    "lint-staged": "15.2.9",
+    "prettier": "3.3.3",
+    "simple-git-hooks": "2.11.1",
+    "typescript": "5.5.4"
+  },
+  "dependencies": {
+    "@commitlint/types": "^19.8.0"
+  }
+}
