@@ -1,17 +1,19 @@
 import 'reflect-metadata';
 import express from 'express';
 import rateLimit from 'express-rate-limit';
+import cors from 'cors';
 
 import { AppDataSource } from './db/data-source';
 import { validateEnv } from './utils/validate-env';
 import orderRouter from './routes/orders';
 import { requestLogger, responseLogger } from './middleware/middleware';
-import { logger } from './utils/logger.js';
+import { logger } from './utils/logger';
 
 validateEnv();
 
 const app = express();
 app.use(express.json());
+app.use(cors()); 
 
 const limiter = rateLimit({
   windowMs: 60 * 1000,
@@ -21,7 +23,7 @@ const limiter = rateLimit({
 
 app.use(limiter);
 
-app.use('/orders', orderRouter);
+app.use('/api/orders', orderRouter);
 app.use(requestLogger);
 app.use(responseLogger);
 

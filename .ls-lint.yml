@@ -1,8 +1,8 @@
 ls:
-  .dir: regex:([.a-z0-9]*)([-.][a-z0-9]+)*
-  .css: regex:([.a-z0-9]*)([-.][a-z0-9]+)*
-  .ts: regex:([.a-z0-9]*)([-.][a-z0-9]+)*
-  .tsx: regex:([.a-z0-9]*)([-.][a-z0-9]+)*
+  .dir: regex:([.A-Za-z0-9]*)([-.][A-Za-z0-9]+)*
+  .css: regex:([.A-Za-z0-9]*)([-.][A-Za-z0-9]+)*
+  .ts: regex:([.A-Za-z0-9]*)([-.][A-Za-z0-9]+)*
+  .tsx: regex:([.A-Za-z0-9]*)([-.][A-Za-z0-9]+)*
 
 ignore:
   - .git
