@@ -7,7 +7,9 @@
 		"paths": {
 			"~/*": ["./src/*"]
 		},
-		"experimentalDecorators": true,
+		"outDir": "dist",
+   	    "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
         "strictPropertyInitialization": false
 	}
 }
