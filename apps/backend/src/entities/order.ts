@@ -32,13 +32,4 @@ export class Order {
 
   @CreateDateColumn()
   createdAt: Date;
-
-  @BeforeInsert()
-  async calculateTotalPrice() {
-    if (this.product && this.product.price) {
-      this.totalPrice = this.quantity * this.product.price;
-    } else {
-      throw new Error('Product price is not available.');
-    }
-  }
 }
