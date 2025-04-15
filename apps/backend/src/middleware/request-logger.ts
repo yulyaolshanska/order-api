@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { Request, Response, NextFunction } from 'express';
 
-import { logger } from '../utils/logger.js';
+import { logger } from '../utils/logger';
 
 export const requestLogger = (req: Request, res: Response, next: NextFunction): void => {
   const date = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
