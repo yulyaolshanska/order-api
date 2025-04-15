@@ -1,0 +1,74 @@
+.header {
+  position: relative;
+  padding: 20px;
+  border-bottom: 1px solid gray;
+}
+
+.headerInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.headerNav {
+  position: absolute;
+  right: 0;
+  height: 100%;
+}
+
+.navHeaderList {
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navHeaderItem {
+  border-left: 1px solid gray;
+  padding: 25px;
+}
+
+.navHeaderInner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.profileNav {
+  position: relative;
+  cursor: pointer;
+}
+
+.profileNav:hover .profileNavList,
+.profileNav:focus .profileNavList,
+.profileNavList:focus-within .profileNavList {
+  display: block;
+}
+
+.profileNavList {
+  position: absolute;
+  top: 90%;
+  right: 15px;
+  z-index: 5;
+  display: none;
+  min-width: 150px;
+  padding: 0;
+  list-style: none;
+  background-color: white;
+  border-radius: 1px;
+  box-shadow: dimgray;
+}
+
+.profileNavItem {
+  padding: 0 10px 10px;
+  text-align: center;
+
+  &:first-child {
+    padding-top: 10px;
+  }
+}
+
