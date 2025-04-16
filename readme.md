@@ -151,13 +151,12 @@ docker-compose down -v
 ## 🧩 Technologies Used
 
 - Backend: Node.js, Express, TypeScript
-- Frontend: React (Vite)
+- Frontend: React (Vite), TypeScript
 - Database: PostgreSQL
-- ORM: Prisma (or Sequelize / TypeORM)
-- Testing: Jest, Supertest
+- ORM: TypeORM
 - Docker: Docker, Docker Compose
 - Rate Limiting: express-rate-limit
-- Logging: Morgan / custom middleware
+- Logging: Winston
 
 ## 📁 API Documentation
 
