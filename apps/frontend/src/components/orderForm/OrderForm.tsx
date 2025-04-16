@@ -23,9 +23,9 @@ export const OrderForm = () => {
       reset();
       notifySuccess("Order created successfully!");
     } catch (error: any) {
-        const message = getErrorMessage(error.response.data.message); 
-        setApiError(message);
-        notifyError(message);
+      const message = getErrorMessage(error.response.data.message);
+      setApiError(message);
+      notifyError(message);
     }
   };
 

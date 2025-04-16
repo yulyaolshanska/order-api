@@ -1,7 +1,6 @@
 {
-  "extends": "../../tsconfig.json",
   "include": ["**/*.ts", "**/*.js"],
-  "exclude": ["node_modules", "dist"],
+  "exclude": ["node_modules", "build"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
@@ -10,6 +9,8 @@
     "outDir": "dist",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   }
 }

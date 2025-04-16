@@ -1,1 +1,1 @@
-export  { ApiResponseMessage } from "./apiResponseMessage"
+export { ApiResponseMessage } from "./apiResponseMessage";

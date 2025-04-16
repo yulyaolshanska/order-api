@@ -9,7 +9,7 @@ const OrderTable: FC = () => {
 
   return (
     <>
-      {loading && <Loader/>}
+      {loading && <Loader />}
       {error && <p className={styles.error}>{error}</p>}
       {orders && (
         <table className={styles.table}>
@@ -22,7 +22,7 @@ const OrderTable: FC = () => {
             </tr>
           </thead>
           <tbody>
-            {orders.map(({id,product,quantity,totalPrice}) => (
+            {orders.map(({ id, product, quantity, totalPrice }) => (
               <tr key={id}>
                 <td>{product.name}</td>
                 <td>{quantity}</td>

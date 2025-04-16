@@ -18,7 +18,7 @@ const config: UserConfig = {
         "build",
         "ci",
         "revert",
-      ], 
+      ],
     ],
   },
 };
