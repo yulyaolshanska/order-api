@@ -1,13 +1,15 @@
 import { FC } from "react";
+
 import { useAppSelector } from "../../hooks/reduxHooks";
 import styles from "./OrderTable.module.css";
+import { Loader } from "../loader/Loader";
 
 const OrderTable: FC = () => {
   const { orders, loading, error } = useAppSelector((state) => state.order);
 
   return (
     <>
-      {loading && <p>Loading orders...</p>}
+      {loading && <Loader/>}
       {error && <p className={styles.error}>{error}</p>}
       {orders && (
         <table className={styles.table}>
@@ -20,12 +22,12 @@ const OrderTable: FC = () => {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order) => (
-              <tr key={order.id}>
-                <td>{order.product.name}</td>
-                <td>{order.quantity}</td>
-                <td>${order.product.price}</td>
-                <td>${order.totalPrice}</td>
+            {orders.map(({id,product,quantity,totalPrice}) => (
+              <tr key={id}>
+                <td>{product.name}</td>
+                <td>{quantity}</td>
+                <td>${product.price}</td>
+                <td>${totalPrice}</td>
               </tr>
             ))}
           </tbody>

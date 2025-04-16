@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { AppPath } from "../../constants/enums/enums";
-import styles from "./header.module.css";
+import styles from "./Header.module.css";
 
 const Header: React.FC = () => {
   return (
@@ -29,7 +29,7 @@ const Header: React.FC = () => {
             <li className={styles.navHeaderItem} title="Orders">
               <Link
                 data-test-id="header-orders-link"
-                to={AppPath.ORDERS}
+                to={AppPath.HOME}
                 className={styles.navHeaderInner}
               >
                 Orders

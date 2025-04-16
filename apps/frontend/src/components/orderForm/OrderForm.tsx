@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { createOrder } from "../../api/orderApi";
 import type { CreateOrderRequestDto } from "../../types/types";
 import styles from "./OrderForm.module.css";
+import { getErrorMessage, notifyError, notifySuccess } from "../../utils/utils";
 
 export const OrderForm = () => {
   const {
@@ -20,15 +21,11 @@ export const OrderForm = () => {
     try {
       await createOrder(data);
       reset();
-      alert("Order created successfully!");
+      notifySuccess("Order created successfully!");
     } catch (error: any) {
-      if (error.response) {
-        const message =
-          error.response.data?.message || "Something went wrong";
+        const message = getErrorMessage(error.response.data.message); 
         setApiError(message);
-      } else {
-        setApiError("Network error");
-      }
+        notifyError(message);
     }
   };
 

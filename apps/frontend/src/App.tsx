@@ -29,10 +29,6 @@ function App() {
                   element: <CreateOrder />,
                 },
                 {
-                  path: AppPath.ORDERS,
-                  element: <Orders />,
-                },
-                {
                   path: AppPath.ANY,
                   element: <Navigate to={AppPath.HOME} replace />,
                 },

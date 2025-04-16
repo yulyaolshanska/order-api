@@ -1,8 +1,7 @@
 import axios from "axios";
 
 import { CreateOrderRequestDto, Order } from "../types/order";
-
-const API_BASE = "http://localhost:3000/api";
+import { API_BASE } from "../constants/constants";
 
 export const createOrder = async (data: CreateOrderRequestDto) => {
   return axios.post(`${API_BASE}/orders`, data);
