@@ -1,10 +1,10 @@
-import { DataSource } from 'typeorm';
+import { DataSource } from "typeorm";
 
-import { User, Product, Order } from '../entities/entities';
-import { DbConfig } from './db-config';
+import { User, Product, Order } from "../entities/entities";
+import { DbConfig } from "./db-config";
 
 export const AppDataSource = new DataSource({
-  type: 'postgres',
+  type: "postgres",
   host: DbConfig.DB_HOST,
   port: DbConfig.DB_PORT,
   username: DbConfig.DB_USER,

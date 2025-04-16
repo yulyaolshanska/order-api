@@ -1,15 +1,15 @@
 {
-	"extends": "../../tsconfig.json",
-	"include": ["**/*.ts", "**/*.js"],
-	"exclude": ["node_modules", "build"],
-	"compilerOptions": {
-		"baseUrl": ".",
-		"paths": {
-			"~/*": ["./src/*"]
-		},
-		"outDir": "dist",
-   	    "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "strictPropertyInitialization": false
-	}
+  "extends": "../../tsconfig.json",
+  "include": ["**/*.ts", "**/*.js"],
+  "exclude": ["node_modules", "dist"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "outDir": "dist",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictPropertyInitialization": false
+  }
 }

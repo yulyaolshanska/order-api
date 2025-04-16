@@ -1,0 +1,70 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: order_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1prostoparol1
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./apps/backend
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - db
+    env_file:
+      - .env
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASS: 1prostoparol1
+      DB_NAME: order_db
+    ports:
+      - "3000:3000"
+    working_dir: /backend
+
+  seed:
+    build:
+      context: ./apps/backend
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    command: npm run seed
+    env_file:
+      - .env
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASS: 1prostoparol1
+      DB_NAME: order_db
+    working_dir: /backend
+
+  frontend:
+    build:
+      context: ./apps/frontend
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
+    working_dir: /frontend
+
+volumes:
+  postgres_data:
