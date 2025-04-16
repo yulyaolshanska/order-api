@@ -1,10 +1,25 @@
-import { AppDataSource } from '../data-source';
-import { Product } from '../../entities/entities';
+import { AppDataSource } from "../data-source";
+import { Product } from "../../entities/entities";
 
 const initialProducts = [
-  { name: 'Keyboard', price: 100, stock: 20 },
-  { name: 'Mouse', price: 50, stock: 40 },
-  { name: 'Monitor', price: 300, stock: 10 },
+  {
+    id: "8c32ff73-bad8-4e5e-88d2-4e27a1cb62f2",
+    name: "Keyboard",
+    price: 100,
+    stock: 20,
+  },
+  {
+    id: "8c32ff73-bad8-4e5e-99d2-4907a1cb62f2",
+    name: "Mouse",
+    price: 50,
+    stock: 40,
+  },
+  {
+    id: "1c32ff73-bad8-4e5e-88d2-4e27a1cb62f2",
+    name: "Monitor",
+    price: 300,
+    stock: 10,
+  },
 ];
 
 export const seedProducts = async () => {
@@ -18,7 +33,7 @@ export const seedProducts = async () => {
       await productRepo.save(product);
       console.log(`✅ Product "${data.name}" created`);
     } else {
-      console.log('ℹ️ Product already exists:', exists.name);
+      console.log("ℹ️ Product already exists:", exists.name);
     }
   }
 };

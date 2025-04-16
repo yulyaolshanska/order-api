@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "build": "tsc -p tsconfig.build.json",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "ts-node src/db/seeds/seedAll.ts",
-    "start": "ts-node-dev --respawn --transpile-only src/index.ts"
+    "seed": "node dist/db/seeds/seedAll.js",
+    "start": "ts-node-dev --respawn --inspect -- src/index.ts",
+    "serve": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,7 @@
   "dependencies": {
     "class-validator": "^0.14.1",
     "cors": "^2.8.5",
+    "date-fns": "^4.1.0",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "express-rate-limit": "^7.5.0",
@@ -21,7 +24,8 @@
     "reflect-metadata": "^0.2.2",
     "typeorm": "^0.3.22",
     "uuid": "^11.1.0",
-    "winston": "^3.17.0"
+    "winston": "^3.17.0",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
