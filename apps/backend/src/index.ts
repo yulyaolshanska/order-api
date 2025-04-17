@@ -8,6 +8,7 @@ import { validateEnv } from "./utils/validate-env";
 import orderRouter from "./routes/orders";
 import { requestLogger, responseLogger } from "./middleware/middleware";
 import { logger } from "./utils/logger";
+import { ApiResponseMessage } from "./constants/apiResponseMessage";
 
 validateEnv();
 
@@ -18,7 +19,7 @@ app.use(cors());
 const limiter = rateLimit({
   windowMs: 60 * 1000,
   max: 10,
-  message: "Too many requests from this user",
+  message: ApiResponseMessage.RATE_LIMIT,
 });
 
 app.use(limiter);
