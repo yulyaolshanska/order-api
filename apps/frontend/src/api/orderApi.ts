@@ -4,7 +4,7 @@ import { CreateOrderRequestDto, Order } from "../types/order";
 import { API_BASE } from "../constants/constants";
 
 export const createOrder = async (data: CreateOrderRequestDto) => {
-  return axios.post(`${API_BASE}/orders`, data);
+  return await axios.post(`${API_BASE}/orders`, data);
 };
 
 export const getUserOrders = async (userId: string): Promise<Order[]> => {

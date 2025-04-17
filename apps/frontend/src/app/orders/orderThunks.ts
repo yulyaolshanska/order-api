@@ -17,11 +17,16 @@ export const submitOrder = createAsyncThunk<
   }
 });
 
-export const fetchUserOrders = createAsyncThunk<Order[], string>(
-  "order/fetchUserOrders",
-  async (userId) => {
-    const response = await getUserOrders(userId);
-
-    return response;
-  },
-);
+export const fetchUserOrders = createAsyncThunk<
+  Order[],
+  string,
+  { rejectValue: string }
+>("order/fetchUserOrders", async (userId, { rejectWithValue }) => {
+  try {
+    return await getUserOrders(userId);
+  } catch (err: any) {
+    return rejectWithValue(
+      err.response?.data?.message || "Failed to fetch user orders"
+    );
+  }
+});
