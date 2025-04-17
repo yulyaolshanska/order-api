@@ -26,7 +26,7 @@ export const fetchUserOrders = createAsyncThunk<
     return await getUserOrders(userId);
   } catch (err: any) {
     return rejectWithValue(
-      err.response?.data?.message || "Failed to fetch user orders"
+      err.response?.data?.message || "Failed to fetch user orders",
     );
   }
 });
