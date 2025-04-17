@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { createOrder } from "../../api/orderApi";
@@ -14,17 +13,13 @@ export const OrderForm = () => {
     reset,
   } = useForm<CreateOrderRequestDto>();
 
-  const [apiError, setApiError] = useState("");
-
   const onSubmit = async (data: CreateOrderRequestDto) => {
-    setApiError("");
     try {
       await createOrder(data);
       reset();
       notifySuccess("Order created successfully!");
     } catch (error: any) {
       const message = getErrorMessage(error.response.data.message);
-      setApiError(message);
       notifyError(message);
     }
   };
@@ -67,8 +62,6 @@ export const OrderForm = () => {
           <p className={styles.error}>{errors.quantity.message}</p>
         )}
       </div>
-
-      {apiError && <p className={styles.error}>{apiError}</p>}
 
       <button type="submit" className={styles.submitBtn}>
         Submit Order

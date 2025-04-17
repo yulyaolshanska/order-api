@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 import { AppPath } from "../../constants/enums/enums";
 import styles from "./Header.module.css";
@@ -17,23 +17,27 @@ const Header: React.FC = () => {
         </Link>
         <nav data-test-id="header-nav" className={styles.headerNav}>
           <ul className={styles.navHeaderList}>
-            <li className={styles.navHeaderItem} title="Create Order">
-              <Link
-                data-test-id="header-create-order-link"
-                to={AppPath.CREATE_ORDER}
-                className={styles.navHeaderInner}
-              >
-                Create Order
-              </Link>
-            </li>
             <li className={styles.navHeaderItem} title="Orders">
-              <Link
+              <NavLink
                 data-test-id="header-orders-link"
                 to={AppPath.HOME}
-                className={styles.navHeaderInner}
+                className={({ isActive }) =>
+                  `${styles.navHeaderInner} ${isActive ? styles.active : ""}`
+                }
               >
                 Orders
-              </Link>
+              </NavLink>
+            </li>
+            <li className={styles.navHeaderItem} title="Create Order">
+              <NavLink
+                data-test-id="header-create-order-link"
+                to={AppPath.CREATE_ORDER}
+                className={({ isActive }) =>
+                  `${styles.navHeaderInner} ${isActive ? styles.active : ""}`
+                }
+              >
+                Create Order
+              </NavLink>
             </li>
           </ul>
         </nav>
